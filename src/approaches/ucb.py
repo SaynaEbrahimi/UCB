@@ -189,10 +189,10 @@ class Appr(object):
             loss=self.elbo_loss(images,targets,t,num_batches,sample=True).to(self.device)
 
             # Backward
-            self.model.cuda()
+            self.model.to(self.device)
             self.optimizer.zero_grad()
             loss.backward(retain_graph=True)
-            self.model.cuda()
+            self.model.to(self.device)
 
             # Update parameters
             self.optimizer.step()
